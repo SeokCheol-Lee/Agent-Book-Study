@@ -1,0 +1,8 @@
+langchain
+langchainhub
+langchain-openai
+langchain-community
+openai
+google-search-results
+google-genai
+langchain-google-genai
