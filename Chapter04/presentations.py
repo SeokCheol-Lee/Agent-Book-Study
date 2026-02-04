@@ -1,15 +1,20 @@
 # 환경 변수 적재하기
 from dotenv import load_dotenv
 
+import pandas as pd
+from openai import OpenAI
+
+# DALL·E 3 모델이 생성한 이미지 가져오기
+import requests
+
+
 load_dotenv()
 
 # OpenAI 인스턴스 생성
-from openai import OpenAI
 
 client = OpenAI()
 
 # 문서 적재 및 첫 부분 표시
-import pandas as pd
 
 file_path = 'data/sales_data.csv'
 sales_data = pd.read_csv(file_path)
@@ -119,7 +124,6 @@ assistant_thoughts_and_actions = [message.content[0] for message in messages.dat
 for content in assistant_thoughts_and_actions:
     print(content)
 
-import time
 
 # 사용자 메시지를 제출하고 완료를 기다리는 함수
 def submit_message_wait_completion(assistant_id, thread, user_message, file_ids=None):
@@ -203,8 +207,6 @@ response = client.images.generate(
 # DALL·E 3 모델이 생성한 이미지의 URL 가져오기
 image_url = response.data[0].url
 
-# DALL·E 3 모델이 생성한 이미지 가져오기
-import requests
 
 dalle_img_path = '꽃말의비밀정원.png'
 img = requests.get(image_url)
